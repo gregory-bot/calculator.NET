@@ -1,0 +1,30 @@
+﻿
+@page
+@model TipCalculatorRazorApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Tip Calculator";
+}
+
+<h2>Tip Calculator</h2>
+
+<form method="post">
+    <div>
+        <label for="MealCost">Meal Cost:</label>
+        <input type="text" asp-for="MealCost" />
+        <span asp-validation-for="MealCost" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" asp-page-handler="Calculate">Calculate</button>
+        <button type="submit" asp-page-handler="Clear">Clear</button>
+    </div>
+
+    <h3>Tip Amounts:</h3>
+    <p>10% Tip: $@Model.Tip10.ToString("0.00")</p>
+    <p>15% Tip: $@Model.Tip15.ToString("0.00")</p>
+    <p>20% Tip: $@Model.Tip20.ToString("0.00")</p>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
